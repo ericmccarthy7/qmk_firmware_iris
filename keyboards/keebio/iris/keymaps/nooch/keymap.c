@@ -37,9 +37,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_GRV,  KC_TRNS, KC_TRNS, KC_PPLS, KC_TRNS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     RGB_VAI,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                           KC_ESC,  KC_LBRC, KC_RBRC, KC_MINS, KC_EQL, KC_TRNS,
+     KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, RGB_VAI, RGB_VAD,                           KC_ESC,  KC_LBRC, KC_RBRC, KC_MINS, KC_EQL, KC_TRNS,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     RGB_VAD, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT, KC_RGHT, KC_TRNS,          KC_TRNS, KC_TRNS, KC_DOWN,   KC_UP,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT, KC_RGHT, KC_TRNS,          KC_TRNS, KC_TRNS, KC_DOWN,   KC_UP,  KC_TRNS,  KC_TRNS,  KC_TRNS,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     KC_TRNS, KC_TRNS, KC_TRNS,                    KC_TRNS,  KC_TRNS, KC_TRNS
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -89,10 +89,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
         case _LOWER:
-            rgblight_sethsv(HSV_CYAN);
+        case _RAISE:
+        case _ADJUST:
+            rgblight_sethsv(180, 100, rgblight_get_val());
+            rgblight_mode(0);
             break;
         default: // for any other layers, or the default layer
-            rgblight_sethsv(HSV_WHITE);
+            rgblight_sethsv(0, 0, rgblight_get_val());
+            rgblight_mode(0);
+            
             break;
    }
   return state;
