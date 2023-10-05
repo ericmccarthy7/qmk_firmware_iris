@@ -35,11 +35,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_ESC,  KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,                               KC_F6,  KC_F7,  KC_F8, KC_F9,    KC_F10,   KC_BSPC,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, RGB_VAI,                            KC_TRNS, KC_GRV,  KC_TRNS, KC_TRNS, KC_PPLS, KC_TRNS,
+     KC_TRNS, KC_TRNS, KC_TRNS, KC_MPLY, KC_VOLU, RGB_VAI,                            KC_TRNS, KC_GRV,  KC_TRNS, KC_TRNS, KC_PPLS, KC_BACKSLASH,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, RGB_VAD,                           KC_ESC,  KC_LBRC, KC_RBRC, KC_MINS, KC_EQL, KC_TRNS,
+     KC_TRNS,  KC_TRNS, KC_MPRV, KC_MNXT, KC_VOLD, RGB_VAD,                           KC_ESC,  KC_LBRC, KC_RBRC, KC_MINS, KC_EQL, KC_TRNS,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT, KC_RGHT, KC_TRNS,          KC_TRNS, KC_TRNS, KC_DOWN,   KC_UP,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+     KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT, KC_RGHT,  KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_DOWN,   KC_UP,  KC_TRNS,  KC_TRNS,  KC_TRNS,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     KC_TRNS, KC_TRNS, KC_TRNS,                    KC_TRNS,  KC_TRNS, KC_TRNS
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -91,7 +91,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         case _LOWER:
         case _RAISE:
         case _ADJUST:
-            rgblight_sethsv(180, 100, rgblight_get_val());
+            rgblight_sethsv(125, 255, rgblight_get_val());
             rgblight_mode(0);
             break;
         default: // for any other layers, or the default layer
