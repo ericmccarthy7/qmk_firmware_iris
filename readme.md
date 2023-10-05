@@ -1,5 +1,16 @@
 # Quantum Mechanical Keyboard Firmware
 
+## self notes
+
+- use qmk msys and run:
+
+```
+qmk compile -kb keebio/iris/rev7 -km nooch
+```
+
+- then use qmk configurator and grab the hex gfenerated above
+- put kb in flash mode by pressing rest on bottom
+
 [![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
 [![Discord](https://img.shields.io/discord/440868230475677696.svg)](https://discord.gg/Uq7gcHh)
 [![Docs Status](https://img.shields.io/badge/docs-ready-orange.svg)](https://docs.qmk.fm)
